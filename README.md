@@ -24,6 +24,11 @@ load it directly
 ```js
 const {configFromEnvOrJsonFile} = require('@cypress/env-or-json-file')
 const config = configFromEnvOrJsonFile('foo.json')
+if (config) {
+  // ok, loaded somehow
+} else {
+  console.error('Missing config...')
+}
 ```
 
 But when you move to CI, just grab the file's contents and put it as

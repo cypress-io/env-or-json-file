@@ -20,6 +20,11 @@ describe('@cypress/env-or-json-file', () => {
   }
   const configString = JSON.stringify(config)
 
+  it('returns undefined if cannot load', () => {
+    const loaded = configFromEnvOrJsonFile('does not exist')
+    la(loaded === undefined, 'loaded something', loaded)
+  })
+
   describe('loads from env variable', () => {
     beforeEach(() => {
       process.env.foo_json = configString
