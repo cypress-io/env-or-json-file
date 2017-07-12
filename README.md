@@ -18,6 +18,11 @@ npm install --save @cypress/env-or-json-file
 
 ## Use
 
+## Debug
+
+To see verbose log message from this module, run with
+`DEBUG=env-or-json-file ...` environment variable.
+
 ### Small print
 
 License: MIT - do anything with the code, but don't blame us if it does not work.

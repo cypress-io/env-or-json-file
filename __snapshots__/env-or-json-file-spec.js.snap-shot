@@ -1,0 +1,5 @@
+exports['loads foo.json 1'] = {
+  "foo": "bar",
+  "baz": 42
+}
+
