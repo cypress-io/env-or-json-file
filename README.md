@@ -18,10 +18,38 @@ npm install --save @cypress/env-or-json-file
 
 ## Use
 
+If you have configuration file locally `foo.json` with all your settings,
+load it directly
+
+```js
+const {configFromEnvOrJsonFile} = require('@cypress/env-or-json-file')
+const config = configFromEnvOrJsonFile('foo.json')
+```
+
+But when you move to CI, just grab the file's contents and put it as
+environment variable `foo_json` (environment variables often have restrictions
+on characters, so replace all `/.-` characters in the path with `_`)
+
+```sh
+cat foo.json | pbcopy
+```
+
+Paste the contents into CI variable `foo_json` and it should load the config
+on CI without checking in a sensitive file.
+
 ## Debug
 
 To see verbose log message from this module, run with
 `DEBUG=env-or-json-file ...` environment variable.
+
+## Tips
+
+* To prevent committing sensitive files use
+  [ban-sensitive-files](https://github.com/bahmutov/ban-sensitive-files)
+* Make sure CI does NOT leak environment variables to forks, like
+  [CircleCI does](https://circleci.com/docs/1.0/fork-pr-builds/)
+
+![Stop CircleCI default variable leak](images/circleci-env-vars.png)
 
 ### Small print
 

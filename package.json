@@ -90,5 +90,10 @@
       "path": "dont-crack",
       "test-against": []
     }
+  },
+  "dependencies": {
+    "check-more-types": "2.24.0",
+    "debug": "2.6.8",
+    "lazy-ass": "1.6.0"
   }
 }
