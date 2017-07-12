@@ -2,7 +2,9 @@
 
 const la = require('lazy-ass')
 const is = require('check-more-types')
-const snapshot = require('snap-shot')
+
+// quick and dirty deep comparison
+const isEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b)
 
 /* global describe, it, beforeEach, afterEach */
 describe('@cypress/env-or-json-file', () => {
@@ -29,7 +31,7 @@ describe('@cypress/env-or-json-file', () => {
 
     it('simple config', () => {
       const loaded = configFromEnvOrJsonFile('foo.json')
-      snapshot(loaded)
+      la(isEqual(loaded, config), 'wrong config', loaded)
     })
   })
 
@@ -54,7 +56,7 @@ describe('@cypress/env-or-json-file', () => {
 
     it('loads foo.json', () => {
       const loaded = configFromEnvOrJsonFile('foo.json')
-      snapshot(loaded)
+      la(isEqual(loaded, config), 'wrong config', loaded)
     })
   })
 })
