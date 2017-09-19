@@ -2,13 +2,22 @@
 
 const la = require('lazy-ass')
 const is = require('check-more-types')
+const path = require('path')
 
 // quick and dirty deep comparison
 const isEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b)
 
 /* global describe, it, beforeEach, afterEach */
 describe('@cypress/env-or-json-file', () => {
-  const { configFromEnvOrJsonFile } = require('.')
+  const { configFromEnvOrJsonFile, filenameToShellVariable } = require('.')
+
+  describe('filename to shell variable', () => {
+    it('forms string removing slashes', () => {
+      const filename = path.join('scripts', 'support', '.credentials.json')
+      const result = filenameToShellVariable(filename)
+      la(result === 'scripts_support__credentials_json', result)
+    })
+  })
 
   it('is a function', () => {
     la(is.fn(configFromEnvOrJsonFile))

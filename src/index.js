@@ -48,5 +48,6 @@ function configFromEnvOrJsonFile (filename) {
 }
 
 module.exports = {
-  configFromEnvOrJsonFile
+  configFromEnvOrJsonFile,
+  filenameToShellVariable
 }

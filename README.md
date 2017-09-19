@@ -47,6 +47,17 @@ on CI without checking in a sensitive file.
 To see verbose log message from this module, run with
 `DEBUG=env-or-json-file ...` environment variable.
 
+## Filename
+
+Given a filename with path, function `filenameToShellVariable` converts it to
+environment key name, normalizing slashes and dots.
+
+```js
+const {filenameToShellVariable} = require('@cypress/env-or-json-file')
+filenameToShellVariable('foo/bar/.me.json')
+// foo_bar__me_json
+```
+
 ## Tips
 
 * To prevent committing sensitive files use
