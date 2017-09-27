@@ -10,7 +10,12 @@ const debug = require('debug')('env-or-json-file')
 function filenameToShellVariable (filename) {
   la(is.unemptyString(filename), 'missing filename to convert')
   const rep = '_'
-  return filename.replace(/\//g, rep).replace(/\./g, rep).replace(/-/g, rep)
+  // replace all separators with _ or similar character
+  return filename
+    .replace(/\//g, rep)
+    .replace(/\\/g, rep)
+    .replace(/\./g, rep)
+    .replace(/-/g, rep)
 }
 
 function maybeLoadFromVariable (filename) {

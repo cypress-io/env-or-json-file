@@ -17,6 +17,12 @@ describe('@cypress/env-or-json-file', () => {
       const result = filenameToShellVariable(filename)
       la(result === 'scripts_support__credentials_json', result)
     })
+
+    it('removes windows back slashes', () => {
+      const filename = 'foo\\bar\\baz'
+      const result = filenameToShellVariable(filename)
+      la(result === 'foo_bar_baz', result)
+    })
   })
 
   it('is a function', () => {
