@@ -5,6 +5,7 @@
 [![NPM][npm-icon] ][npm-url]
 
 [![Build status][ci-image] ][ci-url]
+[![Build status](https://ci.appveyor.com/api/projects/status/lwqty4s0g0l1x9x0?svg=true)](https://ci.appveyor.com/project/cypress-io/env-or-json-file)
 [![semantic-release][semantic-image] ][semantic-url]
 [![js-standard-style][standard-image]][standard-url]
 
