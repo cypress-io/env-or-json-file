@@ -9,9 +9,10 @@ const debug = require('debug')('env-or-json-file')
 // that cannot be there
 function filenameToShellVariable (filename) {
   la(is.unemptyString(filename), 'missing filename to convert')
+  const basename = path.basename(filename)
   const rep = '_'
   // replace all separators with _ or similar character
-  return filename
+  return basename
     .replace(/\//g, rep)
     .replace(/\\/g, rep)
     .replace(/\./g, rep)

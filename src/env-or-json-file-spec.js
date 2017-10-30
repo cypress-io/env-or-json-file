@@ -15,7 +15,7 @@ describe('@cypress/env-or-json-file', () => {
     it('forms string removing slashes', () => {
       const filename = path.join('scripts', 'support', '.credentials.json')
       const result = filenameToShellVariable(filename)
-      la(result === 'scripts_support__credentials_json', result)
+      la(result === '_credentials_json', result)
     })
 
     it('removes windows back slashes', () => {
