@@ -3,6 +3,9 @@
 const la = require('lazy-ass')
 const is = require('check-more-types')
 const path = require('path')
+const os = require('os')
+
+const isWindows = os.platform() === 'win32'
 
 // quick and dirty deep comparison
 const isEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b)
@@ -18,11 +21,13 @@ describe('@cypress/env-or-json-file', () => {
       la(result === '_credentials_json', result)
     })
 
-    it('removes windows back slashes', () => {
-      const filename = 'foo\\bar\\baz'
-      const result = filenameToShellVariable(filename)
-      la(result === 'foo_bar_baz', result)
-    })
+    if (!isWindows) {
+      it('removes windows back slashes', () => {
+        const filename = 'foo\\bar\\baz'
+        const result = filenameToShellVariable(filename)
+        la(result === 'foo_bar_baz', result)
+      })
+    }
   })
 
   it('is a function', () => {
