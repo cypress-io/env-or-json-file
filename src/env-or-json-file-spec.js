@@ -62,7 +62,10 @@ describe('@cypress/env-or-json-file', () => {
 
     beforeEach(() => {
       const fullPath = path.resolve('foo.json')
-      sinon.stub(fs, 'existsSync').withArgs(fullPath).returns(true)
+      sinon
+        .stub(fs, 'existsSync')
+        .withArgs(fullPath)
+        .returns(true)
       sinon
         .stub(fs, 'readFileSync')
         .withArgs(fullPath, 'utf8')
